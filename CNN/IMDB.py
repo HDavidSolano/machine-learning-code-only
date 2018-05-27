@@ -1,7 +1,7 @@
+import numpy as np
 from keras.datasets import imdb
 from keras import models
 from keras import layers
-import numpy as np
 from keras import optimizers # This to configure your optimizer
 from keras import losses     # This is to configure your loss function in detail
 from keras import metrics    # This is to configure your metrics in detail
@@ -44,7 +44,7 @@ model.add(layers.Dense(1, activation='sigmoid'))
 # model.compile(optimizer=optimizers.RMSprop(lr=0.001), loss='binary_crossentropy', metrics=['accuracy'])
 # Adding optimizer, loss, and metric customization
 model.compile(optimizer=optimizers.RMSprop(lr=0.001), loss=losses.binary_crossentropy, metrics=[metrics.binary_accuracy])
-
+# binary-crossentropy is good for binary classification problems
 history = model.fit(partial_x_train, partial_y_train, epochs=10,batch_size=512, validation_data=(x_val, y_val))
 
 results = model.evaluate(x_test, y_test) # To show final numbers
